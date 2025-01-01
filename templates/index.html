@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; 
+            margin:0; padding:0;
+            background-color: #f8f9fa; 
+            color: #333;
+        }
+        .container {
+            max-width: 600px; 
+            margin:50px auto; 
+            background:#fff; 
+            padding:20px;
+            border-radius:10px; 
+            box-shadow:0 4px 8px rgba(0,0,0,0.2); 
+            text-align:center;
+        }
+        h1 { 
+            color: #4CAF50; 
+            margin-bottom:20px;
+        }
+        p {
+            margin: 15px 0;
+        }
+        a {
+            display:inline-block; 
+            margin:10px; 
+            padding:10px 20px; 
+            text-decoration:none;
+            background-color:#4CAF50; 
+            color:#fff; 
+            border-radius:5px; 
+            transition: background 0.3s;
+        }
+        a:hover { 
+            background-color: #45a049; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ username }}!</h1>
+        
+        {% if security_level == 1 %}
+            <!-- SecurityLevel = 1 -->
+            <p><a href="/my-results">Show My Contest Entry Results</a></p>
+            <p><a href="/add-entry">Add New Baking Contest Entry</a></p>
+            <p><a href="/logout">Logout</a></p>
+        {% elif security_level == 2 %}
+            <!-- SecurityLevel = 2 -->
+            <p><a href="/my-results">Show My Contest Entry Results</a></p>
+            <p><a href="/add-entry">Add New Baking Contest Entry</a></p>
+            <p><a href="/users">List Baking Contest Users</a></p>
+            <p><a href="/logout">Logout</a></p>
+        {% elif security_level == 3 %}
+            <!-- SecurityLevel = 3 -->
+            <p><a href="/my-results">Show My Contest Entry Results</a></p>
+            <p><a href="/add-user">Add New Baking Contest User</a></p>
+            <p><a href="/add-entry">Add New Baking Contest Entry</a></p>
+            <p><a href="/users">List Baking Contest Users</a></p>
+            <p><a href="/results">Baking Contest Entry Results</a></p>
+            <p><a href="/logout">Logout</a></p>
+        {% else %}
+            <!-- Fallback: if no security level matches, just logout -->
+            <p><a href="/logout">Logout</a></p>
+        {% endif %}
+    </div>
+</body>
+</html>

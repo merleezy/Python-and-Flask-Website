@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Baking Contest Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; padding: 0;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h3 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: left;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form action="{{ url_for('add_entry') }}" method="POST">
+            <h3>Add New Baking Contest Entry</h3>
+            
+            <label for="NameOfBakingItem">Name of Baking Item</label>
+            <input type="text" id="NameOfBakingItem" name="NameOfBakingItem" required>
+
+            <label for="NumExcellentVotes">Number of Excellent Votes</label>
+            <input type="text" id="NumExcellentVotes" name="NumExcellentVotes" required>
+
+            <label for="NumOkVotes">Number of OK Votes</label>
+            <input type="text" id="NumOkVotes" name="NumOkVotes" required>
+
+            <label for="NumBadVotes">Number of Bad Votes</label>
+            <input type="text" id="NumBadVotes" name="NumBadVotes" required>
+
+            <input type="submit" value="Submit">
+            <a href="{{ url_for('home') }}">Go Back to Home Page</a>
+        </form>
+    </div>
+</body>
+</html>

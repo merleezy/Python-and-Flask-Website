@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Contest Entry Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; 
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px; 
+            margin: 50px auto; 
+            background: #fff; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+            text-align: center;
+        }
+        h1 {
+            color: #4CAF50; 
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc; 
+            padding: 10px; 
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .links a {
+            display: inline-block;
+            margin: 10px; 
+            padding: 10px 20px; 
+            text-decoration: none;
+            background-color: #4CAF50; 
+            color: #fff; 
+            border-radius: 5px; 
+            transition: background 0.3s;
+        }
+        .links a:hover {
+            background-color: #45a049; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Contest Entry Results</h1>
+        {% if entries and entries|length > 0 %}
+        <table>
+            <tr>
+                <th>Name Of Baking Item</th>
+                <th>Excellent Votes</th>
+                <th>Ok Votes</th>
+                <th>Bad Votes</th>
+            </tr>
+            {% for entry in entries %}
+            <tr>
+                <td>{{ entry[0] }}</td>
+                <td>{{ entry[1] }}</td>
+                <td>{{ entry[2] }}</td>
+                <td>{{ entry[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No entries found.</p>
+        {% endif %}
+        <div class="links">
+            <a href="{{ url_for('home') }}">Go Back to Home Page</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

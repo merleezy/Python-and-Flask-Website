@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Baking Contest Users</title>
+        <style>
+            table {
+                width: 80%;
+                margin: 20px auto;
+                border-collapse: collapse;
+            }
+            table, th, td {
+                border: 1px solid black;
+            }
+            th, td {
+                padding: 10px;
+                text-align: left;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            a {
+                display: block;
+                text-align: center;
+                margin: 20px;
+                text-decoration: none;
+                color: white;
+                background-color: #4CAF50;
+                padding: 10px 20px;
+                border-radius: 5px;
+            }
+            a:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 style="text-align: center;">Baking Contest Users</h1>
+
+        {% if users %}
+            <table border="1">
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Phone Number</th>
+                    <th>Security Level</th>
+                    <th>Login Password</th>
+                </tr>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user[0] }}</td>
+                        <td>{{ user[1] }}</td>
+                        <td>{{ user[2] }}</td>
+                        <td>{{ user[3] }}</td>
+                        <td>{{ user[4] }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p style="text-align: center; color: red;">No users found!</p>
+        {% endif %}
+    
+        <a href="/">Return to Home</a>
+    </body>
+</html>
